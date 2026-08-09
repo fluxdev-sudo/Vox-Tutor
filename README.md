@@ -9,8 +9,8 @@ VoxTutor is a voice-guided technical interview simulator on the VoxForge track. 
 ## 3. Architecture / Evaluation Flow
 1. **Input:** Student types or speaks their answer to a technical question.
 2. **Local Embedding:** The text is embedded locally using `all-MiniLM-L6-v2`.
-3. **Qdrant Semantic Match:** Qdrant calculates the closest vector match (Ideal vs. Misconception).
-4. **LLM Translation:** The raw Qdrant classification is synthesized into a single feedback sentence.
+3. **Qdrant Semantic Match:** Qdrant calculates the closest vector match (Ideal vs. Acceptable vs. Misconception).
+4. **Direct Evaluation:** The system maps Qdrant's mathematical classification directly to a feedback tier for zero-latency processing, bypassing the need for a secondary LLM.
 5. **Rime TTS:** Rime generates the audio payload and speaks the feedback aloud.
 
 ## 4. Working Proof
