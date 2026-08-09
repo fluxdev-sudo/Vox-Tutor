@@ -1,39 +1,36 @@
-# VoxTutor — Frontend
+# VoxTutor: The Strategic Voice Interview Agent
 
-Voice-guided viva & interview practice UI: a Home screen and a Placements
-interview screen (question → spoken/typed answer → scored feedback → next
-question), built with TanStack Start, React and Tailwind.
+## 1. Problem / Research Question
+Static, hardcoded grading fails to understand human intent. In technical interviews, a student can explain a concept perfectly using different words, but traditional keyword-matching algorithms will fail them. We needed a system that evaluates the *semantic intent* of spoken answers in real-time.
 
-This is the **frontend only**. Question sourcing and grading currently run on
-placeholder logic ([src/lib/sample-questions.ts](src/lib/sample-questions.ts),
-[src/lib/grade-stub.ts](src/lib/grade-stub.ts)) so the UI is fully demoable on
-its own — swap those two files for real API calls to wire up a backend.
+## 2. Solution
+VoxTutor is a voice-guided technical interview simulator on the VoxForge track. It uses **Qdrant** for relative semantic grading (matching student answers against Ideal, Acceptable, and Misconception vectors) and **Rime** to deliver low-latency, spoken feedback directly to the user. 
 
-## Run it
+## 3. Architecture / Evaluation Flow
+1. **Input:** Student types or speaks their answer to a technical question.
+2. **Local Embedding:** The text is embedded locally using `all-MiniLM-L6-v2`.
+3. **Qdrant Semantic Match:** Qdrant calculates the closest vector match (Ideal vs. Misconception).
+4. **LLM Translation:** The raw Qdrant classification is synthesized into a single feedback sentence.
+5. **Rime TTS:** Rime generates the audio payload and speaks the feedback aloud.
 
+## 4. Working Proof
+*   **Video Demo:** [Insert Google Drive Link Here]
+*   **Live Feature:** The semantic evaluation engine accurately catches misconceptions (e.g., confusing LIFO with FIFO) and issues corrective audio feedback.
+
+## 5. Setup & Execution
+Ensure you have a stable Node.js environment.
 ```bash
+# 1. Clone the repository
+git clone [https://github.com/fluxdev-sudo/Vox-Tutor.git](https://github.com/fluxdev-sudo/Vox-Tutor.git)
+cd Vox-Tutor
+
+# 2. Install dependencies
 npm install
+
+# 3. Configure environment variables (.env)
+# QDRANT_URL=...
+# QDRANT_API_KEY=...
+# RIME_API_KEY=...
+
+# 4. Run the local development server
 npm run dev
-```
-
-Opens at `http://localhost:8080`.
-
-## Voice feedback (optional)
-
-Spoken questions/feedback use [Rime](https://rime.ai) if configured; without
-it, everything still works, just as text only.
-
-```bash
-export RIME_API_KEY=...
-```
-
-## Where things live
-
-| | |
-|---|---|
-| `src/routes/index.tsx` | Home screen |
-| `src/routes/placements.tsx` | Interview screen |
-| `src/lib/sample-questions.ts` | Placeholder question bank — **replace with a real question source** |
-| `src/lib/grade-stub.ts` | Placeholder grading — **replace with real grading** |
-| `src/lib/tts.server.ts` / `tts.functions.ts` | Rime voice, independent of the above |
-| `src/components/` | UI components (shadcn/ui + `bottom-nav.tsx`) |
