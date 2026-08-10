@@ -45,6 +45,6 @@ npm install
 npm run dev
 ```
 ## 7. Contributions
-Mohammed Farhan [Team Leader] - UI Design, Front-end design and Video spokesperson
-Ankush Kumar Patel - Back-end Coding, UI setup, API setup and Tester
-Tanmay Dixit - Presentation and Video script
+- Mohammed Farhan [Team Leader] - UI Design, Front-end design and Video spokesperson
+- Ankush Kumar Patel - Back-end Coding, UI setup, API setup and Tester
+- Tanmay Dixit - Presentation and Video script
