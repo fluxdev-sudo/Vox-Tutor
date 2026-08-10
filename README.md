@@ -14,14 +14,23 @@ VoxTutor is a voice-guided technical interview simulator on the VoxForge track. 
 5. **Rime TTS:** Rime generates the audio payload and speaks the feedback aloud.
 
 ## 4. Working Proof
-*   **Video Demo:** [Insert Google Drive Link Here]
+*   **Video Demo:** https://drive.google.com/file/d/1SCkSLWhZOlUnmq3Ya3SsAIKJ8mDR178-/view?usp=sharing
 *   **Live Feature:** The semantic evaluation engine accurately catches misconceptions (e.g., confusing LIFO with FIFO) and issues corrective audio feedback.
+  
+## 5.Limitations
 
-## 5. Setup & Execution
+- **Grading is based on similarity to 3 stored reference answers per question**, not open-ended understanding — validated on manual test cases, not a large sample of real student answers.
+- **Scoring is fixed per tier** (not a continuous confidence score), and the embedding model is small/general-purpose, not fine-tuned for technical interview language.
+- **No persistence or real accounts** — bookmarks and scores reset on refresh; the profile shown is a placeholder.
+- **Speech-to-text and voice feedback depend on external services** — the browser's Web Speech API (Chromium-only) and a Rime API key (falls back to text-only without one).
+- **The 207-question bank was AI-generated for prototyping** and hasn't been reviewed by a subject-matter expert.
+- **English only, no topic filtering yet, and no measured latency numbers.**
+  
+## 6. Setup & Execution
 Ensure you have a stable Node.js environment.
 ```bash
 # 1. Clone the repository
-git clone [https://github.com/fluxdev-sudo/Vox-Tutor.git](https://github.com/fluxdev-sudo/Vox-Tutor.git)
+git clone https://github.com/fluxdev-sudo/Vox-Tutor.git
 cd Vox-Tutor
 
 # 2. Install dependencies
