@@ -48,3 +48,8 @@ npm run dev
 - Mohammed Farhan [Team Leader] - UI Design, Front-end design and Video spokesperson
 - Ankush Kumar Patel - Back-end Coding, UI setup, API setup and Tester
 - Tanmay Dixit - Presentation and Video script
+
+
+## 8. Note on AI-Assisted Development
+
+AI assistance (Claude) was used during development for code implementation and debugging. All architectural decisions, document drafting , testing and final review were done by the team.
